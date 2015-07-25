@@ -1,6 +1,5 @@
-![screenshot](https://i.imgur.com/4EaXKi8.png?1)
-
-# React Isomorphic Starterkit
+# Hapi Universal Redux
+Fork from Rick Wong's [React Isomorphic Starterkit](https://github.com/RickWong/react-isomorphic-starterkit), with [Redux](https://github.com/gaearon/redux) added to the isomorphic mix.
 
 Isomorphic starterkit with server-side React rendering using 
 [npm](https://www.npmjs.com/), 
@@ -10,6 +9,7 @@ Isomorphic starterkit with server-side React rendering using
 [hapi.js](http://www.hapijs.com/), 
 [babel.js](http://babeljs.io/), 
 [react.js](https://facebook.github.io/react), 
+[redux](https://github.com/gaearon/redux),
 [react-router](https://github.com/rackt/react-router), 
 [react-hot-loader](https://gaearon.github.io/react-hot-loader), 
 [react-transmit](https://github.com/RickWong/react-transmit),
@@ -25,18 +25,18 @@ Isomorphic starterkit with server-side React rendering using
 - Babel.js automatically compiles ES6 + ES7
 - React Transmit to preload on server to client
 - InlineCss-component for styling components
-- Accessibility hints from react-a11y
+- Redux for managing app state
 
 It just works out-of-the-box.
 
 ## Installation
 
 ```bash
-	git clone https://github.com/RickWong/react-isomorphic-starterkit.git
-	cd react-isomorphic-starterkit
+	git clone https://github.com/luandro/hapi-universal-redux.git
+	cd hapi-universal-redux
 	
 	npm install
-	npm run watch     # Yes, ONE command for server AND client development!
+	npm run dev     # changed from original for ease
 	
 	# production build and run
 	NODE_ENV=production npm run build
@@ -45,14 +45,10 @@ It just works out-of-the-box.
 
 ## Usage
 
-Run `npm run watch` in your terminal and play with `views/Main.js` to get a feel of
+Run `npm run dev` in your terminal and play with `views/Main.js` to get a feel of
 the server-side rendering and client-side hot updates.
 
-## Community
-
-Let's start one together! After you ★Star this project, follow [@Rygu](https://twitter.com/rygu)
-on Twitter.
 
 ## License
 
-BSD 3-Clause license. Copyright © 2015, Rick Wong. All rights reserved.
+BSD 3-Clause license. Copyright © 2015, Rick Wong and Luandro. All rights reserved.
