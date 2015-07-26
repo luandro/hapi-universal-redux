@@ -7,9 +7,7 @@ import * as reducers from '../reducers/index';
 
 class AppContainer extends React.Component {
   render() {
-      const redux = createRedux(reducers, this.props.initialState);
-      console.log("initial state");
-      console.log(this.props.initialState);
+    const redux = createRedux(reducers, this.props.initialState);
     return (
       <Provider redux={redux}>
         {() =>
