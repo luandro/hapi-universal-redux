@@ -7,7 +7,8 @@ import routes from "views/Routes";
  * Fire-up React Router.
  */
 Router.run(routes, Router.HistoryLocation, (Handler) => {
-	Transmit.render(Handler, {}, document.getElementById("react-root"));
+	let initialState = window.__reactTransmitPacket;
+	Transmit.render(Handler, {initialState}, document.getElementById("react-root"));
 });
 
 /**

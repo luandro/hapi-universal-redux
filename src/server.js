@@ -4,6 +4,10 @@ import Router from "react-router";
 import Transmit from "react-transmit";
 import routes from "views/Routes";
 import url from "url";
+import * as reducers from './reducers/index';
+import { createRedux } from 'redux';
+import {Provider} from 'redux/react';
+const redux = createRedux(reducers);
 
 /**
  * Start Hapi server on port 8000.
@@ -57,12 +61,13 @@ server.ext("onPreResponse", (request, reply) => {
 
 	Router.run(routes, request.path, (Handler, router) => {
 		Transmit.renderToString(Handler).then(({reactString, reactData}) => {
+			reactData = redux.getState();
 			let output = (
 				`<!doctype html>
 				<html lang="en-us">
 					<head>
 						<meta charset="utf-8">
-						<title>react-isomorphic-starterkit</title>
+						<title>Hapi Universal Redux</title>
 						<link rel="shortcut icon" href="/favicon.ico">
 					</head>
 					<body>

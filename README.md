@@ -1,3 +1,4 @@
+![screenshot](http://i.imgur.com/zRnWuWQ.png?1)
 # Hapi Universal Redux
 Fork from Rick Wong's [React Isomorphic Starterkit](https://github.com/RickWong/react-isomorphic-starterkit), with [Redux](https://github.com/gaearon/redux) added to the isomorphic mix.
 
@@ -13,7 +14,7 @@ Isomorphic starterkit with server-side React rendering using
 [react-router](https://github.com/rackt/react-router), 
 [react-hot-loader](https://gaearon.github.io/react-hot-loader), 
 [react-transmit](https://github.com/RickWong/react-transmit),
-[react-inline-css](https://github.com/RickWong/react-inline-css)
+[radium](https://github.com/FormidableLabs/radium)
 
 ## Features
 
@@ -24,7 +25,7 @@ Isomorphic starterkit with server-side React rendering using
 - React Hot Loader for instant client updates
 - Babel.js automatically compiles ES6 + ES7
 - React Transmit to preload on server to client
-- InlineCss-component for styling components
+- Radium for styling components
 - Redux for managing app state
 
 It just works out-of-the-box.
