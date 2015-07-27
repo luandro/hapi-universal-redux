@@ -2,15 +2,18 @@ import React from 'react';
 import Radium from 'radium';
 
 @Radium
-export default class Couter extends React.Component {
+export default class Counter extends React.Component {
   render() {
     let count = this.props.counter.toString();
+    const {plus, minus} = this.props;
+    const {base, counter, inputContainer, button} = styles;
+
     return (
-      <div style={styles.base}>
-        <span style={styles.count}>{count}</span>
-        <div style={styles.inputContainer}>
-          <button style={styles.button} onClick={this.props.plus}>+</button>
-          <button style={styles.button} onClick={this.props.minus}>-</button>
+      <div style={base}>
+        <span style={counter}>{count}</span>
+        <div style={inputContainer}>
+          <button style={button} onClick={plus}>+</button>
+          <button style={button} onClick={minus}>-</button>
         </div>
       </div>
     );
@@ -22,7 +25,7 @@ const styles = {
     paddingBottom: 25
 
   },
-  count: {
+  counter: {
     fontSize: '5em',
     color: 'white',
     marginLeft: 20
