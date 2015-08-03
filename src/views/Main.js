@@ -164,8 +164,7 @@ export default Transmit.createContainer(Main, {
        */
       if (__CLIENT__) {
         const {hostname, port} = window.location;
-        githubApi = `http://${hostname}:${port}/api/github`;
-      }
+        githubApi = process.env.NODE_ENV === "production" ? "`https://${hostname}:${port}/api/github`;" : "`http://${hostname}:${port}/api/github`;";	     
 
       /**
        * Load a few stargazers using the Fetch API.
