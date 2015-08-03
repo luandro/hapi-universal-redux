@@ -1,12 +1,12 @@
-import __fetch from "isomorphic-fetch";
 import React from "react";
-import Radium from "radium";
+import __fetch from "isomorphic-fetch";
 import Transmit from "react-transmit";
+
+import Radium from "radium";
 import { bindActionCreators } from 'redux';
 import { connect } from 'redux/react';
 import * as CounterActions from '../actions/CounterActions';
 import Counter from '../components/Counter';
-
 
 /**
  * Redux connecting to the Main React application entry-point for both the server and client.
@@ -15,59 +15,54 @@ import Counter from '../components/Counter';
   counter: state.counter
 }))
  @Radium
-class Main extends React.Component {
+export default class Main extends React.Component {
 	/**
-	 * Runs on server and client.
-	 */
-	componentWillMount () {
-		if (__SERVER__) {
-			/**
-			 * This is only run on the server, and will be removed from the client build.
-			 */
-			console.log("Hello server");
-		}
+   * Runs on server and client.
+   */
+  componentWillMount () {
+    if (__SERVER__) {
+      /**
+       * This is only run on the server, and will be removed from the client build.
+       */
+      console.log("Hello server");
+    }
 
-		if (__CLIENT__) {
-			/**
-			 * This is only run on the client.
-			 */
-			console.log("Hello client");
+    if (__CLIENT__) {
+      /**
+       * This is only run on the client.
+       */
+      console.log("Hello client");
 
-			/**
-			 * Recursive function to transmit the rest of the stargazers on the client.
-			 */
-			const transmitRemainingStargazers = () => {
-				if (!this.props.queryParams.pagesToFetch > 0) {
-					return;
-				}
+      /**
+       * Recursive function to transmit the rest of the stargazers on the client.
+       */
+      const transmitRemainingStargazers = () => {
+        if (!this.props.queryParams.pagesToFetch > 0) {
+          return;
+        }
 
-				this.props.setQueryParams({
-					prevStargazers: this.props.allStargazers,
-					nextPage:       this.props.queryParams.nextPage + 1,
-					pagesToFetch:   this.props.queryParams.pagesToFetch - 1
-				}).then(transmitRemainingStargazers);
-			};
+        this.props.setQueryParams({
+          prevStargazers: this.props.allStargazers,
+          nextPage:       this.props.queryParams.nextPage + 1,
+          pagesToFetch:   this.props.queryParams.pagesToFetch - 1
+        }).then(transmitRemainingStargazers);
+      };
 
-			transmitRemainingStargazers();
-		}
-	}
-
+      transmitRemainingStargazers();
+    }
+  }
 	/**
 	 * Runs on server and client.
 	 */
 	render () {
-		const repositoryUrl = "https://github.com/Luandro/hapi-universal-redux";
+		const repositoryUrl = "https://github.com/luandro/hapi-universal-redux";
 		const avatarSize    = 32;
 		const avatarUrl     = (id) => `https://avatars.githubusercontent.com/u/${id}?v=3&s=${avatarSize}`;
 		/**
-		 * This are the Redux props. Brought by the @connect decorator.
+		 * These are the Redux and Transmit props.
 		 */
 		const { counter, dispatch } = this.props;
-		/**
-		 * This is a Transmit prop. See below for its query.
-		 */
 		const stargazers = this.props.allStargazers;
-
 		return (
 			<div style={styles.base}>
 				<a style={styles.github} href={repositoryUrl}>
@@ -149,52 +144,52 @@ const styles = {
  * Use Transmit to query and return GitHub stargazers as a Promise.
  */
 export default Transmit.createContainer(Main, {
-	queryParams: {
-		prevStargazers: [],
-		nextPage:       1,
-		pagesToFetch:   10
-	},
-	queries: {
-		/**
-		 * Return a Promise of the previous stargazers + the newly fetched stargazers.
-		 */
-		allStargazers (queryParams) {
-			/**
-			 * On the server, connect to GitHub directly.
-			 */
-			let githubApi = "https://api.github.com";
+  queryParams: {
+    prevStargazers: [],
+    nextPage:       1,
+    pagesToFetch:   10
+  },
+  queries: {
+    /**
+     * Return a Promise of the previous stargazers + the newly fetched stargazers.
+     */
+    allStargazers (queryParams) {
+      /**
+       * On the server, connect to GitHub directly.
+       */
+      let githubApi = "https://api.github.com";
 
-			/**
-			 * On the client, connect to GitHub via the Hapi proxy route.
-			 */
-			if (__CLIENT__) {
-				const {hostname, port} = window.location;
-				githubApi = `http://${hostname}:${port}/api/github`;
-			}
+      /**
+       * On the client, connect to GitHub via the Hapi proxy route.
+       */
+      if (__CLIENT__) {
+        const {hostname, port} = window.location;
+        githubApi = `http://${hostname}:${port}/api/github`;
+      }
 
-			/**
-			 * Load a few stargazers using the Fetch API.
-			 */
-			return fetch(
-				githubApi + "/repos/Luandro/hapi-universal-redux/stargazers" +
-				`?per_page=100&page=${queryParams.nextPage}`
-			).then((response) => response.json()).then((body) => {
-				/**
-				 * Stop fetching if the response body is empty.
-				 */
-				if (!body || !body.length) {
-					queryParams.pagesToFetch = 0;
+      /**
+       * Load a few stargazers using the Fetch API.
+       */
+      return fetch(
+        githubApi + "/repos/luandro/hapi-universal-redux/stargazers" +
+        `?per_page=100&page=${queryParams.nextPage}`
+      ).then((response) => response.json()).then((body) => {
+        /**
+         * Stop fetching if the response body is empty.
+         */
+        if (!body || !body.length) {
+          queryParams.pagesToFetch = 0;
 
-					return queryParams.prevStargazers;
-				}
+          return queryParams.prevStargazers;
+        }
 
-				/**
-				 * Pick id and username from fetched stargazers.
-				 */
-				const fechedStargazers = body.map(({id, login}) => ({id, login}));
+        /**
+         * Pick id and username from fetched stargazers.
+         */
+        const fechedStargazers = body.map(({id, login}) => ({id, login}));
 
-				return queryParams.prevStargazers.concat(fechedStargazers);
-			});
-		}
-	}
+        return queryParams.prevStargazers.concat(fechedStargazers);
+      });
+    }
+  }
 });

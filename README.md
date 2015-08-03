@@ -1,4 +1,4 @@
-![screenshot](http://i.imgur.com/zRnWuWQ.png?1)
+![screenshot](http://i.imgur.com/uBbhk92.png)
 # Hapi Universal Redux
 Fork from Rick Wong's [React Isomorphic Starterkit](https://github.com/RickWong/react-isomorphic-starterkit), with [Redux](https://github.com/gaearon/redux) added to the isomorphic mix.
 
