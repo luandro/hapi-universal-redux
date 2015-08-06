@@ -4,7 +4,7 @@ import Transmit from "react-transmit";
 
 import Radium from "radium";
 import { bindActionCreators } from 'redux';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
 import Counter from '../components/Counter';
 

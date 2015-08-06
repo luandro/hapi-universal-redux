@@ -5,9 +5,10 @@ import Transmit from "react-transmit";
 import routes from "views/Routes";
 import url from "url";
 import * as reducers from './reducers/index';
-import { createRedux } from 'redux';
-import {Provider} from 'redux/react';
-const redux = createRedux(reducers);
+import { createStore, combineReducers } from 'redux';
+import {Provider} from 'react-redux';
+const reducer = combineReducers(reducers)
+const store = createStore(reducer);
 
 /**
  * Start Hapi server on port 8000.
@@ -61,7 +62,7 @@ server.ext("onPreResponse", (request, reply) => {
 
 	Router.run(routes, request.path, (Handler, router) => {
 		Transmit.renderToString(Handler).then(({reactString, reactData}) => {
-			reactData = redux.getState();
+			reactData = store.getState();
 			let output = (
 				`<!doctype html>
 				<html lang="en-us">
