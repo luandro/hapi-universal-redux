@@ -1,7 +1,7 @@
 {
   "name": "hapi-universal-redux",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "scripts": {
     "start": "NODE_PATH=\"./src\" node ./babel.server",
     "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client.js",
-    "postinstall": "npm run build",
+    "postinstall": "webpack --config webpack.client.js",
     "watch-client": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client-watch.js && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.client-watch.js",
     "dev": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start\""
   },
