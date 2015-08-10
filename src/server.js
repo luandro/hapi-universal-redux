@@ -61,8 +61,7 @@ server.ext("onPreResponse", (request, reply) => {
 	}
 
 	Router.run(routes, request.path, (Handler, router) => {
-		Transmit.renderToString(Handler).then(({reactString, reactData}) => {
-			reactData = store.getState();
+		Transmit.renderToString(Handler, { initialState: store.getState() }).then(({reactString, reactData}) => {
 			let output = (
 				`<!doctype html>
 				<html lang="en-us">

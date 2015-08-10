@@ -3,6 +3,12 @@ import Radium from 'radium';
 
 @Radium
 export default class Counter extends React.Component {
+  static propTypes = {
+    counter: React.PropTypes.number.isRequired,
+    plus: React.PropTypes.func.isRequired,
+    minus: React.PropTypes.func.isRequired
+  }
+
   render() {
     let count = this.props.counter.toString();
     const {plus, minus} = this.props;
@@ -46,6 +52,6 @@ const styles = {
     color: 'white',
     margin: '0 5px',
     float: 'left',
-    
+
   }
 }

@@ -6,7 +6,10 @@ import {Provider} from "react-redux";
 import * as reducers from '../reducers/index';
 
 class AppContainer extends React.Component {
-  
+  static propTypes = {
+    initialState: React.PropTypes.object.isRequired
+  }
+
   render() {
     const reducer = combineReducers(reducers)
     const store = createStore(reducer, this.props.initialState);
@@ -22,5 +25,3 @@ class AppContainer extends React.Component {
 export default Transmit.createContainer(AppContainer, {
    queries: {}
 });
-
-
