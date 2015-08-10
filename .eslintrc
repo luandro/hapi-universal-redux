@@ -1,0 +1,18 @@
+{
+  "extends": "eslint-config-airbnb",
+  "ecmaFeatures": {
+    globalReturn: true
+  },
+  "rules": {
+    // Temporarily disabled due to a possible bug in babel-eslint (todomvc example)
+    "block-scoped-var": 0,
+    "no-console": 0,
+    // Temporarily disabled for test/* until babel/babel-eslint#33 is resolved
+    "padded-blocks": 0,
+    "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }]
+  },
+  "globals": {
+    "__CLIENT__": true,
+    "__SERVER__": true
+  }
+}
