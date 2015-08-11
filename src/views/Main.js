@@ -46,7 +46,7 @@ const styles = {
 }))
 
 @Radium
-export default class Main extends React.Component {
+class Main extends React.Component {
   /**
    * Runs on server and client.
    */
