@@ -9,7 +9,7 @@ injectTapEventPlugin();
  * Fire-up React Router.
  */
 Router.run(routes, Router.HistoryLocation, (Handler) => {
-  const initialState = window.__reactTransmitPacket;
+  const initialState = window.__reactTransmitPacket || {};
   Transmit.render(Handler, {initialState}, document.getElementById('react-root'));
 });
 
