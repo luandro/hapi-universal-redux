@@ -1,4 +1,5 @@
 import React from 'react';
+import 'isomorphic-fetch';
 import {RouteHandler} from 'react-router';
 import Transmit from 'react-transmit';
 import { createStore, combineReducers } from 'redux';

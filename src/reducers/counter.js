@@ -1,7 +1,7 @@
 import {
   COUNTER_PLUS,
   COUNTER_MINUS
-} from '../actions/actionTypes';
+} from 'actions/actionTypes';
 
 const initialState = 0;
 

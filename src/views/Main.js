@@ -1,12 +1,11 @@
 import React from 'react';
-import 'isomorphic-fetch';
 import Transmit from 'react-transmit';
 
 import Radium from 'radium';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
-import Counter from '../components/Counter';
+import * as CounterActions from 'actions/CounterActions';
+import Counter from 'components/Counter';
 
 const styles = {
   base: {

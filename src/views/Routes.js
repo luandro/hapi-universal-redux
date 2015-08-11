@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router';
-import AppContainer from '../containers/AppContainer';
+import AppContainer from 'containers/AppContainer';
 import Main from 'views/Main';
 
 /**

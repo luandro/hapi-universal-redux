@@ -2,6 +2,9 @@ import Router from 'react-router';
 import Transmit from 'react-transmit';
 import routes from 'views/Routes';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 /**
  * Fire-up React Router.
  */

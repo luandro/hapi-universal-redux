@@ -3,7 +3,7 @@ import Router from 'react-router';
 import Transmit from 'react-transmit';
 import routes from 'views/Routes';
 import url from 'url';
-import * as reducers from './reducers/index';
+import * as reducers from 'reducers';
 import { createStore, combineReducers } from 'redux';
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
