@@ -1,7 +1,7 @@
 {
   "name": "hapi-universal-redux",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "react-transmit": "^2.6.4",
-    "redux": "^1.0.0-rc",
+    "redux": "^1.0.1",
     "webpack": "^1.11.0"
   },
   "devDependencies": {
