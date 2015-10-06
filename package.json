@@ -38,7 +38,7 @@
     "radium": "0.13.8",
     "react": "0.13.3",
     "react-redux": "0.8.2",
-    "react-router": "0.13.3",
+    "react-router": "1.0.0-rc1",
     "react-tap-event-plugin": "0.1.8",
     "react-transmit": "2.6.4",
     "redux": "1.0.1",
