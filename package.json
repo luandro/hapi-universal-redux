@@ -36,7 +36,7 @@
     "json-loader": "0.5.3",
     "piping": "0.2.0",
     "radium": "0.13.8",
-    "react": "0.13.3",
+    "react": "0.14.0",
     "react-redux": "0.8.2",
     "react-router": "1.0.0-rc2",
     "react-tap-event-plugin": "0.1.8",
