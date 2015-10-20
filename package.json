@@ -41,7 +41,7 @@
     "react-router": "1.0.0-rc2",
     "react-tap-event-plugin": "0.1.8",
     "react-transmit": "2.6.4",
-    "redux": "3.0.2",
+    "redux": "3.0.3",
     "webpack": "1.12.2"
   },
   "devDependencies": {
