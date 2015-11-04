@@ -1,4 +1,4 @@
-![screenshot](http://i.imgur.com/cRUIsqK.png)
+![screenshot](http://i.imgur.com/njzGkwc.png)
 # Hapi Universal Redux
 ![dependencies](https://img.shields.io/david/luandro/hapi-universal-redux.svg?style=flat-square)
 ![devDependencies](https://img.shields.io/david/dev/luandro/hapi-universal-redux.svg?style=flat-square)
