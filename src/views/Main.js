@@ -71,11 +71,11 @@ export default class Main extends Component {
         <h3>Features</h3>
         <ul>
           <li><span style={styles.new}>NEW </span>Redux for managing app state</li>
+          <li><span style={styles.new}>NEW </span>React Transform for instant client updates</li>
           <li>Fully automated with npm run scripts</li>
           <li>Server hot reloads with piping and Hapi.js</li>
           <li>Webpack for watch + production builds</li>
           <li>React.js + Router on the client and server</li>
-          <li>React Transform for instant client updates</li>
           <li>Babel.js automatically compiles ES6 + ES7</li>
           <li>React Transmit to preload on server to client</li>
         </ul>
