@@ -22,8 +22,28 @@ config.plugins = [
 
 config.module = {
 	loaders: [
-		{include: /\.json$/, loaders: ["json-loader"]},
-		{include: /\.js$/, loaders: ["react-hot", "babel-loader?stage=0&optional=runtime&plugins=typecheck"], exclude: /node_modules/}
+		{
+	    	test: /\.js?$/,
+		    loader: 'babel-loader',
+		    exclude: /node_modules/,
+		    query: {
+		    	"stage": 0,
+		        "plugins": ["react-transform"],
+		        "extra": {
+		          "react-transform": {
+		            	"transforms": [{
+		              		"transform": "react-transform-hmr",
+		              		"imports": ["react"],
+		             		"locals": ["module"]
+		            	}, {
+		              	"transform": "react-transform-catch-errors",
+		              	"imports": ["react", "redbox-react"]
+		            	}]
+		          	}
+		        }
+		    }
+	    },
+	    {include: /\.json$/, loaders: ["json-loader"]}
 	]
 };
 
