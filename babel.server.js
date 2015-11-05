@@ -1,6 +1,6 @@
 require("babel-core/register")({
-	stage: 0,
-	plugins: ["typecheck"]
+	only: /src/,
+	presets: ["es2015", "react", "stage-0"]
 });
 
 /**

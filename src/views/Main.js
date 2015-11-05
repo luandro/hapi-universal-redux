@@ -36,14 +36,7 @@ const styles = {
   },
 };
 
-/**
- * Redux connecting to the Main React application entry-point for both the server and client.
- */
-@connect(state => ({
-  stargazers: state.stargazers,
-  search: state.search
-}))
-export default class Main extends Component {
+class Main extends Component {
   render() {
     const repositoryUrl = 'https://github.com/luandro/hapi-universal-redux';
     const avatarSize    = 32;
@@ -87,9 +80,17 @@ export default class Main extends Component {
         	search={search}
         	{...bindActionCreators(SearchActions, dispatch)} />
         <h3 style={{clear: 'both'}}>Community</h3>
+        <iframe src="https://ghbtns.com/github-btn.html?user=Luandro&repo=hapi-universal-redux&type=star&count=true" frameBorder="0" scrolling="0" width="110" height="20" style={{float:"right"}}></iframe>
         <p>{users}</p>
       </div>
     );
   }
 
 }
+
+export default connect(
+	state => ({
+		stargazers: state.stargazers,
+  		search: state.search
+	})
+)(Main)

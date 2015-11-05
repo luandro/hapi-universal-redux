@@ -4,9 +4,6 @@ import Transmit from 'react-transmit';
 import { connect } from 'react-redux';
 import { saveUsers } from '../actions/StargazersActions';
 
-@connect(state => ({
-	storeStargazers: state.stargazers
-}))
 class StargazersContainer extends Component {
 
 	componentWillMount() {
@@ -49,7 +46,12 @@ class StargazersContainer extends Component {
     	return this.props.children
     }
 }
-
+/**
+ * Redux connect.
+ */
+StargazersContainer = connect(
+  state => ({ storeStargazers: state.stargazers })
+)(StargazersContainer)
 /**
  * Use Transmit to query and return GitHub stargazers as a Promise.
  */

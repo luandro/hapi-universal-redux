@@ -1,4 +1,4 @@
-import Hapi from "hapi";
+import {Server} from "hapi";
 import h2o2 from "h2o2";
 import inert from "inert";
 import React from "react";
@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
 import Transmit from "react-transmit";
-import * as reducers from 'reducers';
+import * as reducers from './reducers';
 import { createStore, combineReducers } from 'redux';
 import routes from "./views/Routes";
 import url from "url";
@@ -22,7 +22,7 @@ const initialState = store.getState();
  * Start Hapi server on port 8000.
  */
 const hostname = process.env.HOSTNAME || "localhost";
-const server = new Hapi.Server();
+const server = new Server();
 
 server.connection({host: hostname, port: process.env.PORT || 8000});
 
@@ -31,12 +31,12 @@ server.register(
 		h2o2,
 		inert
 	],
-	function (err) {
+	(err) => {
 	if (err) {
 		throw err;
 	}
 
-	server.start(function () {
+	server.start(() => {
 		console.info("==> ✅  Server is listening");
 		console.info("==> 🌎  Go to " + server.info.uri.toLowerCase());
 	});
