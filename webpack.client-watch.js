@@ -21,11 +21,10 @@ config.plugins = [
 	new webpack.HotModuleReplacementPlugin()
 ];
 
-config.module.postLoaders =  [
+config.module.loaders =  [
 	{
       test: /\.js?$/,
       loader: 'babel',
-      include: 'src/',
       exclude: /node_modules/,
       query: {
         "stage": 0,

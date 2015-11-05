@@ -11,6 +11,7 @@ export default class SearchBar extends Component {
 						background: 'black',
 						color: 'white',
 						fontSize: 18,
+						paddingLeft: 15,
 						height: 35,
 						width: '80%',
 						borderRadius: 10

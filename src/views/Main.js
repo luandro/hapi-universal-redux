@@ -79,8 +79,10 @@ class Main extends Component {
         <SearchBar
         	search={search}
         	{...bindActionCreators(SearchActions, dispatch)} />
-        <h3 style={{clear: 'both'}}>Community</h3>
-        <iframe src="https://ghbtns.com/github-btn.html?user=Luandro&repo=hapi-universal-redux&type=star&count=true" frameBorder="0" scrolling="0" width="110" height="20" style={{float:"right"}}></iframe>
+        <h3>
+        	Community
+        	<iframe src="https://ghbtns.com/github-btn.html?user=Luandro&repo=hapi-universal-redux&type=star&count=true" frameBorder="0" scrolling="0" width="110" height="20" style={{float:"right"}}></iframe>
+        </h3>
         <p>{users}</p>
       </div>
     );
