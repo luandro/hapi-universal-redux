@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Transmit from 'react-transmit';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as SearchActions from '../actions/SearchActions';
@@ -70,7 +69,6 @@ class Main extends Component {
           <li>Webpack for watch + production builds</li>
           <li>React.js + Router on the client and server</li>
           <li>Babel.js automatically compiles ES6 + ES7</li>
-          <li>React Transmit to preload on server to client</li>
         </ul>
         <p>
           In short – <em>an excellent choice</em>.

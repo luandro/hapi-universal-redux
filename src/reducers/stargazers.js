@@ -7,7 +7,7 @@ const initialState = [];
 export default function stargazers(state = initialState, action) {
 	switch (action.type) {
 	case STARGAZERS_ADD:
-		return state = action.users;
+		return state.concat(action.users);
 	default:
 		return initialState;
 	}

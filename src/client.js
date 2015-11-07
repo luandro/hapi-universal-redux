@@ -1,15 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Router} from "react-router";
-import Transmit from "react-transmit";
-import routes from "./views/Routes";
+import configureStore from "./store/configureStore";
+import { Provider } from 'react-redux';
+import DevTools from "./containers/DevTools";
+import routes from "./routes";
 import {createHistory} from "history";
+const store = configureStore(window.__INITIAL_STATE__);
 
 /**
  * Fire-up React Router.
  */
 const reactRoot = window.document.getElementById("react-root");
-Transmit.render(Router, {routes, history: createHistory()}, reactRoot);
+// Transmit.render(Router, {routes, history: createHistory()}, reactRoot);
+ReactDOM.render(
+	<Provider store={store}>
+    	<div>
+        	<Router routes={routes} history={createHistory()} />
+        	<DevTools />
+       	</div>
+    </Provider>,
+    reactRoot
+)
 
 /**
  * Detect whether the server-side render has been discarded due to an invalid checksum.

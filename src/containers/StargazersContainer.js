@@ -5,8 +5,23 @@ import { connect } from 'react-redux';
 import { saveUsers } from '../actions/StargazersActions';
 
 class StargazersContainer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+        	nextPage: 1,
+        	pagesToFetch: 5
+		}
+	}
 
-	componentWillMount() {
+	componentWillMount = () => {
+		this.fetchStargazers()
+    }
+
+    fetchStargazers = () => {
+    	/**
+         * On the server, connect to GitHub directly.
+         */
+        let githubApi = "https://api.github.com";
         if (__SERVER__) {
             /**
              * This is only run on the server, and will be removed from the client build.
@@ -19,26 +34,52 @@ class StargazersContainer extends Component {
              * This is only run on the client.
              */
             console.log('Hello client');
-
             /**
-             * Recursive function to transmit the rest of the stargazers on the client.
-             */
-            const transmitRemainingStargazers = () => {
-				if (!this.props.transmit.variables.pagesToFetch > 0) {
-					return;
-				}
-				this.props.dispatch(saveUsers(this.props.stargazers))
-				this.props.transmit.forceFetch({
-					prevStargazers: this.props.stargazers,
-					nextPage:       this.props.transmit.variables.nextPage + 1,
-					pagesToFetch:   this.props.transmit.variables.pagesToFetch - 1
-				}).then(transmitRemainingStargazers);
-			};
-
-			transmitRemainingStargazers();
-
+	         * On the client fetch through the proxy.
+	         */
+            const { hostname, port } = window.location;
+            githubApi = `http://${hostname}:${port}/api/github`;
         }
+
+        /**
+         * Load a few stargazers using the Fetch API.
+         */
+        return fetch(
+            githubApi + "/repos/Luandro/hapi-universal-redux/stargazers" +
+            `?per_page=10&page=${this.state.nextPage}`
+        ).then((response) => response.json()).then((body) => {
+        	if (!body || !body.length) {
+                this.setState({
+	        		pagesToFetch: 0
+	        	});
+               	return
+            }
+            /**
+             * Pick id and username from fetched stargazers.
+             */
+            const fechedStargazers = body.map(({ id, login }) => ({ id, login }));
+            /**
+             * Dispatch action to store the fetched information.
+             */
+            this.props.dispatch(saveUsers(fechedStargazers));
+            this.setState({
+        		nextPage: this.state.nextPage + 1,
+        		pagesToFetch: this.state.pagesToFetch -1
+        	});
+        	if (__CLIENT__) {
+        		/**
+				 * Recursive function to fetch the rest of the stargazers on the client.
+				 */
+	        	if(this.state.pagesToFetch > 0) {
+	        		this.fetchStargazers()
+	        	}
+        	}
+
+        }).catch((error) => {
+            console.error(error);
+        });
     }
+
     /**
      * Runs on server and client.
      */
@@ -49,69 +90,6 @@ class StargazersContainer extends Component {
 /**
  * Redux connect.
  */
-StargazersContainer = connect(
-  state => ({ storeStargazers: state.stargazers })
+export default connect(
+  state => ({ stargazers: state.stargazers })
 )(StargazersContainer)
-/**
- * Use Transmit to query and return GitHub stargazers as a Promise.
- */
-export default Transmit.createContainer(StargazersContainer, {
-    initialVariables: {
-        nextPage: 1,
-        pagesToFetch: 10,
-        prevStargazers: []
-    },
-    fragments: {
-        /**
-         * Return a Promise of the previous stargazers + the newly fetched stargazers.
-         */
-        stargazers({
-            nextPage, pagesToFetch, prevStargazers
-        }) {
-            /**
-             * On the server, connect to GitHub directly.
-             */
-            let githubApi = "https://api.github.com";
-
-            /**
-             * On the client, connect to GitHub via the Hapi proxy route.
-             */
-            if (__CLIENT__) {
-                const {
-                    hostname, port
-                } = window.location;
-                githubApi = `http://${hostname}:${port}/api/github`;
-            }
-
-            /**
-             * Load a few stargazers using the Fetch API.
-             */
-            return fetch(
-                githubApi + "/repos/Luandro/hapi-universal-redux/stargazers" +
-                `?per_page=10&page=${nextPage}`
-            ).then((response) => response.json()).then((body) => {
-                /**
-                 * Stop fetching if the response body is empty.
-                 */
-                if (!body || !body.length) {
-                    pagesToFetch = 0;
-
-                    return prevStargazers;
-                }
-
-                /**
-                 * Pick id and username from fetched stargazers.
-                 */
-                const fechedStargazers = body.map(({
-                    id, login
-                }) => ({
-                    id, login
-                }));
-
-                return prevStargazers.concat(fechedStargazers);
-            }).catch((error) => {
-                console.error(error);
-            });
-        }
-    }
-});

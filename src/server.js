@@ -5,17 +5,16 @@ import React from "react";
 import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
-import Transmit from "react-transmit";
-import * as reducers from './reducers';
-import { createStore, combineReducers } from 'redux';
-import routes from "./views/Routes";
+import configureStore from "./store/configureStore";
+import { Provider } from 'react-redux';
+import DevTools from './containers/DevTools';
+import routes from "./routes";
 import url from "url";
 
 /**
- * Combine Redux reducers, create store and get initial state
+ * Create Redux store, and get intitial state.
  */
-const reducer = combineReducers(reducers);
-const store = createStore(reducer);
+const store = configureStore();
 const initialState = store.getState();
 
 /**
@@ -95,30 +94,33 @@ server.ext("onPreResponse", (request, reply) => {
       reply.continue();
     }
     else {
-      Transmit.renderToString(RoutingContext, renderProps)
-      .then(({reactString, reactData}) => {
-
-        let output = (
-          `<!doctype html>
-          <html lang="en-us">
-            <head>
-              <meta charset="utf-8">
-              <title>Hapi Universal Redux</title>
-              <link rel="shortcut icon" href="/favicon.ico">
-            </head>
-            <body>
-              <div id="react-root">${reactString}</div>
-            </body>
-          </html>`
-        );
-
-        const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
-        output          = Transmit.injectIntoMarkup(output, [reactData], [`${webserver}/dist/client.js`]);
-
-        reply(output);
-      }).catch((error) => {
-        console.error(error);
-      });
+    	const reactString = ReactDOM.renderToString(
+			<Provider store={store}>
+				<div>
+					<RoutingContext {...renderProps} />
+					<DevTools />
+				</div>
+			</Provider>
+		);
+		const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
+		let output = (
+			`<!doctype html>
+			<html lang="en-us">
+				<head>
+					<meta charset="utf-8">
+					<title>Hapi Universal Redux</title>
+					<link rel="shortcut icon" href="/favicon.ico">
+				</head>
+				<body>
+					<div id="react-root">${reactString}</div>
+ 				<script>
+ 					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+ 				</script>
+ 				<script src=${webserver}/dist/client.js></script>
+ 			</body>
+			</html>`
+ 		);
+    	reply(output);
     }
   });
 });
