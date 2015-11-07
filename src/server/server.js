@@ -16,4 +16,8 @@ if (process.env.NODE_ENV !== "production") {
 	}
 }
 
-require("./src/server");
+if (process.env.NODE_ENV === 'production') {
+  	module.exports = require('./server.prod');
+} else {
+  	module.exports = require('./server.dev');
+}

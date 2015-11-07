@@ -1,23 +1,20 @@
-![screenshot](http://i.imgur.com/njzGkwc.png)
-# Hapi Universal Redux
+![logo](http://i.imgur.com/r8IegDK.jpg)
 ![dependencies](https://img.shields.io/david/luandro/hapi-universal-redux.svg?style=flat-square)
 ![devDependencies](https://img.shields.io/david/dev/luandro/hapi-universal-redux.svg?style=flat-square)
-
-
-Fork from Rick Wong's [React Isomorphic Starterkit](https://github.com/RickWong/react-isomorphic-starterkit), with [Redux](https://github.com/gaearon/redux) added to the isomorphic mix.
 
 Isomorphic starterkit with server-side React rendering using
 [npm](https://www.npmjs.com/),
 [piping](https://github.com/mdlawson/piping),
 [webpack](https://webpack.github.io/),
 [webpack-dev-server](https://github.com/webpack/webpack-dev-server),
+[react-transform](https://gaearon.github.io/react-hot-loader),
 [hapi.js](http://www.hapijs.com/),
 [babel.js](http://babeljs.io/),
 [react.js](https://facebook.github.io/react),
 [redux](https://github.com/gaearon/redux),
-[react-router](https://github.com/rackt/react-router),
-[react-transform](https://gaearon.github.io/react-hot-loader),
-[react-transmit](https://github.com/RickWong/react-transmit),
+[react-router](https://github.com/rackt/react-router).
+
+![screenshot](http://i.imgur.com/njzGkwc.png)
 
 ## Features
 
@@ -56,4 +53,4 @@ the server-side rendering and client-side hot updates.
 
 ## License
 
-BSD 3-Clause license. Copyright © 2015, Rick Wong and Luandro. All rights reserved.
+BSD 3-Clause license. Copyright © 2015, Luandro. All rights reserved.

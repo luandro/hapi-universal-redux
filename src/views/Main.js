@@ -42,11 +42,11 @@ class Main extends Component {
     const avatarUrl     = (id) => `https://avatars.githubusercontent.com/u/${id}?v=3&s=${avatarSize}`;
     const { stargazers, search, dispatch } = this.props;
     const users = [];
-    stargazers.forEach((user) => {
+    stargazers.forEach((user, key) => {
     	if (user.login.toLowerCase().indexOf(search) === -1) {
         	console.log("user.login:", user.login)
         }
-        users.push(<a key={user.id} href={"https://github.com/"+user.login} target="_blank" title="you here? star us!"><img key={user.id} style={styles.avatar} src={avatarUrl(user.id)} title={user.login} alt={user.login} /></a>);
+        users.push(<a key={key} href={"https://github.com/"+user.login} target="_blank" title="you here? star us!"><img key={user.id} style={styles.avatar} src={avatarUrl(user.id)} title={user.login} alt={user.login} /></a>);
     });
     /**
      * Redux props.
@@ -63,6 +63,7 @@ class Main extends Component {
         <h3>Features</h3>
         <ul>
           <li><span style={styles.new}>NEW </span>Redux for managing app state</li>
+          <li><span style={styles.new}>NEW </span>Redux DevTools for state time travelling</li>
           <li><span style={styles.new}>NEW </span>React Transform for instant client updates</li>
           <li>Fully automated with npm run scripts</li>
           <li>Server hot reloads with piping and Hapi.js</li>

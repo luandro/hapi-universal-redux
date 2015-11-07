@@ -5,10 +5,10 @@ import React from "react";
 import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
-import configureStore from "./store/configureStore";
+import configureStore from "../store/configureStore";
 import { Provider } from 'react-redux';
-import DevTools from './containers/DevTools';
-import routes from "./routes";
+import DevTools from '../containers/DevTools';
+import routes from "../routes";
 import url from "url";
 
 /**
@@ -94,7 +94,7 @@ server.ext("onPreResponse", (request, reply) => {
       reply.continue();
     }
     else {
-    	const reactString = ReactDOM.renderToString(
+		const reactString = ReactDOM.renderToString(
 			<Provider store={store}>
 				<div>
 					<RoutingContext {...renderProps} />
@@ -102,6 +102,7 @@ server.ext("onPreResponse", (request, reply) => {
 				</div>
 			</Provider>
 		);
+
 		const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
 		let output = (
 			`<!doctype html>
