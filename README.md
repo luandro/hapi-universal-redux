@@ -34,12 +34,14 @@ It just works out-of-the-box.
 
 ## Installation
 
+Make sure you're using Node >= 4.0.0.
+
 ```bash
 	git clone https://github.com/luandro/hapi-universal-redux.git
 	cd hapi-universal-redux
 
 	npm install
-	npm run dev     # changed from original for ease
+	npm run dev     # start Hapi server and webpack-dev-server hot server
 
 	# production build and run
 	NODE_ENV=production npm run build
