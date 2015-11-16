@@ -28,7 +28,8 @@ server.connection({host: hostname, port: process.env.PORT || 8000});
 server.register(
 	[
 		h2o2,
-		inert
+		inert,
+		// WebpackPlugin
 	],
 	(err) => {
 	if (err) {
@@ -76,6 +77,7 @@ server.route({
 	}
 });
 
+
 /**
  * Catch dynamic requests here to fire-up React Router.
  */
@@ -94,6 +96,7 @@ server.ext("onPreResponse", (request, reply) => {
       reply.continue();
     }
     else {
+
 		const reactString = ReactDOM.renderToString(
 			<Provider store={store}>
 				<div>

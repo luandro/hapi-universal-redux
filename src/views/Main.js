@@ -42,11 +42,12 @@ class Main extends Component {
     const avatarUrl     = (id) => `https://avatars.githubusercontent.com/u/${id}?v=3&s=${avatarSize}`;
     const { stargazers, search, dispatch } = this.props;
     const users = [];
-    stargazers.forEach((user, key) => {
+    stargazers.forEach((user) => {
     	if (user.login.toLowerCase().indexOf(search) === -1) {
         	console.log("user.login:", user.login)
+        	return
         }
-        users.push(<a key={key} href={"https://github.com/"+user.login} target="_blank" title="you here? star us!"><img key={user.id} style={styles.avatar} src={avatarUrl(user.id)} title={user.login} alt={user.login} /></a>);
+        users.push(<a key={user.id} href={"https://github.com/"+user.login} target="_blank" title="you here? star us!"><img style={styles.avatar} src={avatarUrl(user.id)} title={user.login} alt={user.login} /></a>);
     });
     /**
      * Redux props.
@@ -91,7 +92,7 @@ class Main extends Component {
 
 export default connect(
 	state => ({
-		stargazers: state.stargazers,
+		stargazers: state.stargazers.users,
   		search: state.search
 	})
 )(Main)
