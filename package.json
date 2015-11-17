@@ -1,7 +1,7 @@
 {
   "name": "hapi-universal-redux",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -52,10 +52,10 @@
     "babel-loader": "^5.3.3",
     "babel-plugin-react-transform": "^1.1.1",
     "babel-runtime": "^5.8.29",
-    "concurrently": "0.1.1",
+    "concurrently": "^1.0.0",
     "eslint": "^1.8.0",
-    "eslint-config-airbnb": "0.1.0",
-    "eslint-plugin-react": "^3.8.0",
+    "eslint-config-airbnb": "^1.0.0",
+    "eslint-plugin-react": "^3.9.0",
     "json-loader": "^0.5.3",
     "react-transform": "0.0.3",
     "react-transform-catch-errors": "^1.0.0",
@@ -64,7 +64,7 @@
     "redux-devtools": "^3.0.0-beta-3",
     "redux-devtools-dock-monitor": "^1.0.0-beta-3",
     "redux-devtools-log-monitor": "^1.0.0-beta-3",
-    "webpack": "1.12.2",
+    "webpack": "^1.12.6",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-dev-server": "1.12.1"
   },
