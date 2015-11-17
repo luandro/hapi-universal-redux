@@ -12,8 +12,7 @@ class StargazersContainer extends Component {
     }
     componentDidUpdate = () => {
     	const {stargazers, dispatch} = this.props;
-    	console.log("this.props:", this.props)
-    	if(stargazers.nextPage > 1 && stargazers.pagesToFetch > 0){
+    	if(stargazers.nextPage > 1 && stargazers.pagesToFetch > 0 && stargazers.isLoading === true){
     		this.recursiveFetch();
     	}
     }
