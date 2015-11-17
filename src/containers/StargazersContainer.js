@@ -2,17 +2,20 @@ import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
 import Transmit from 'react-transmit';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/StargazersActions';
+import { fetchUsers, requestUsers } from '../actions/StargazersActions';
 
 class StargazersContainer extends Component {
 
 	componentWillMount = () => {
+		this.props.dispatch(requestUsers());
 		this.recursiveFetch();
     }
     componentDidUpdate = () => {
     	const {stargazers, dispatch} = this.props;
     	console.log("this.props:", this.props)
-    	// this.recursiveFetch();
+    	if(stargazers.nextPage > 1 && stargazers.pagesToFetch > 0){
+    		this.recursiveFetch();
+    	}
     }
 
     recursiveFetch = () => {

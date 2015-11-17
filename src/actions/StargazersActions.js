@@ -17,7 +17,7 @@ function receiveUsers(fetchedStargazers) {
 	};
 }
 
-function requestUsers() {
+export function requestUsers() {
 	return {
 		type: STARGAZERS_REQUEST
 	}
@@ -30,7 +30,6 @@ function stopFetching() {
 
 export function fetchUsers(nextPage, pagesToFetch) {
 	return function (dispatch) {
-		 dispatch(requestUsers())
 		 return fetch(githubApi + "/repos/Luandro/hapi-universal-redux/stargazers" +`?per_page=10&page=${nextPage}`)
 			.then((response) => response.json())
 			.then((body) => {
