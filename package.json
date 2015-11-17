@@ -1,7 +1,7 @@
 {
   "name": "hapi-universal-redux",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   ],
   "main": "babel.server.js",
   "scripts": {
-    "start": "NODE_PATH=\"./src\" node ./src/server/server",
+    "start": "NODE_PATH=\"./src\" node ./babel-server",
     "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client.js",
     "watch-client": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client-watch.js && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.client-watch.js",
     "dev": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start\"",
@@ -37,6 +37,7 @@
     "inert": "^3.2.0",
     "isomorphic-fetch": "2.2.0",
     "piping": "0.3.0",
+    "radium": "^0.15.3",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-redux": "4.0.0",
@@ -44,7 +45,6 @@
     "react-tap-event-plugin": "0.2.1",
     "react-transmit": "^3.0.8",
     "redux": "^3.0.4",
-    "redux-router": "^1.0.0-beta4",
     "redux-thunk": "^1.0.0",
     "webpack": "^1.12.3"
   },

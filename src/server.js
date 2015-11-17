@@ -5,10 +5,10 @@ import React from "react";
 import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
-import configureStore from "../store/configureStore";
+import configureStore from "./store/configureStore";
 import { Provider } from 'react-redux';
-import DevTools from '../containers/DevTools';
-import routes from "../routes";
+import DevTools from './views/containers/DevTools';
+import routes from "./routes";
 import url from "url";
 
 /**
@@ -96,12 +96,12 @@ server.ext("onPreResponse", (request, reply) => {
       reply.continue();
     }
     else {
-
+    	const reduxDevTools = process.env.NODE_ENV === "production" ? "" : <DevTools />;
 		const reactString = ReactDOM.renderToString(
 			<Provider store={store}>
 				<div>
-					<RoutingContext {...renderProps} />
-					<DevTools />
+					<RoutingContext {...renderProps} radiumConfig={{userAgent: request.headers['user-agent']}} />
+					{reduxDevTools}
 				</div>
 			</Provider>
 		);

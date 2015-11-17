@@ -12,9 +12,11 @@ Isomorphic starterkit with server-side React rendering using
 [babel.js](http://babeljs.io/),
 [react.js](https://facebook.github.io/react),
 [redux](https://github.com/gaearon/redux),
-[react-router](https://github.com/rackt/react-router).
+[react-router](https://github.com/rackt/react-router),
+[radium](https://github.com/FormidableLabs/radium).
 
-![screenshot](http://i.imgur.com/njzGkwc.png)
+
+![screenshot](http://i.imgur.com/wezOzRd.png)
 
 ## Features
 
@@ -26,6 +28,7 @@ Isomorphic starterkit with server-side React rendering using
 - Babel.js automatically compiles ES6 + ES7
 - React Transmit to preload on server to client
 - Redux for managing app state
+- Radium for advanced inline styling
 
 It just works out-of-the-box.
 

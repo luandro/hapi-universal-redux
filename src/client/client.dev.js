@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {Router} from "react-router";
 import configureStore from "../store/configureStore";
 import { Provider } from 'react-redux';
-import DevTools from "../containers/DevTools";
+import DevTools from "../views/containers/DevTools";
 import routes from "../routes";
 import {createHistory} from "history";
 const store = configureStore(window.__INITIAL_STATE__);
@@ -26,10 +26,8 @@ ReactDOM.render(
 /**
  * Detect whether the server-side render has been discarded due to an invalid checksum.
  */
-if (process.env.NODE_ENV !== "production") {
-  if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||
-      !reactRoot.firstChild.attributes["data-react-checksum"]) {
-    console.error("Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.");
-  }
+if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||
+  	!reactRoot.firstChild.attributes["data-react-checksum"]) {
+	console.error("Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.");
 }
 
