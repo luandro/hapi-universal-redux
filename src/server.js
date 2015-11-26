@@ -5,9 +5,9 @@ import React from "react";
 import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
-import configureStore from "./store/configureStore";
+import configureStore from "./store.js";
+import RadiumContainer from './views/containers/RadiumContainer';
 import { Provider } from 'react-redux';
-import DevTools from './views/containers/DevTools';
 import routes from "./routes";
 import url from "url";
 
@@ -16,7 +16,6 @@ import url from "url";
  */
 const store = configureStore();
 const initialState = store.getState();
-
 /**
  * Start Hapi server on port 8000.
  */
@@ -86,9 +85,9 @@ server.ext("onPreResponse", (request, reply) => {
     return reply.continue();
   }
 
-  let location = createLocation(request.path);
+  //let location = createLocation(request.path);
 
-  match({routes, location}, (error, redirectLocation, renderProps) => {
+  match({routes, location: request.path}, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       reply.redirect(redirectLocation.pathname + redirectLocation.search)
     }
@@ -96,14 +95,12 @@ server.ext("onPreResponse", (request, reply) => {
       reply.continue();
     }
     else {
-    	const reduxDevTools = process.env.NODE_ENV === "production" ? "" : <DevTools />;
 		const reactString = ReactDOM.renderToString(
-			<Provider store={store}>
-				<div>
-					<RoutingContext {...renderProps} radiumConfig={{userAgent: request.headers['user-agent']}} />
-					{reduxDevTools}
-				</div>
-			</Provider>
+				<Provider store={store}>
+					<RadiumContainer radiumConfig={{userAgent: request.headers['user-agent']}}>
+						<RoutingContext {...renderProps} />
+					</RadiumContainer>
+				</Provider>
 		);
 
 		const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
@@ -117,8 +114,10 @@ server.ext("onPreResponse", (request, reply) => {
 				</head>
 				<body>
 					<div id="react-root">${reactString}</div>
+					<div id="react-dev"></div>
  				<script>
  					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+ 					window.__UA__ = ${JSON.stringify(request.headers['user-agent'])}
  				</script>
  				<script src=${webserver}/dist/client.js></script>
  			</body>

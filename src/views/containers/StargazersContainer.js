@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
-import Transmit from 'react-transmit';
 import { connect } from 'react-redux';
 import { fetchUsers, requestUsers } from '../../actions/StargazersActions';
 import Radium, { Style } from 'radium';
@@ -35,14 +34,12 @@ class StargazersContainer extends Component {
     	dispatch(fetchUsers(stargazers.nextPage, stargazers.pagesToFetch));
     }
 
-
+    /**
+     * Render child routes and Radium's style component
+     */
     render() {
-
     	return (
     		<div>
-    			{/*
-				  * Radium Style component, for global styles.
-    			*/}
     			<Style rules={{
 					'body, html': {
 			    		margin: 0,
