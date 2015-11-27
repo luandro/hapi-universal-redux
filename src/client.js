@@ -1,11 +1,3 @@
-// /**
-//  * Main client entry, loads DevTools depending of the environment
-//  */
-// if (process.env.NODE_ENV === 'production') {
-//   	module.exports = require('./client/client.prod');
-// } else {
-//   	module.exports = require('./client/client.dev');
-// }
 import React from "react";
 import ReactDOM from "react-dom";
 import {Router} from "react-router";

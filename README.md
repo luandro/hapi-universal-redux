@@ -12,6 +12,8 @@ Isomorphic starterkit with server-side React rendering using
 [babel.js](http://babeljs.io/),
 [react.js](https://facebook.github.io/react),
 [redux](https://github.com/gaearon/redux),
+[redux-devtools](https://github.com/gaearon/redux-devtools),
+[simple-redux-router](https://github.com/jlongster/redux-simple-router),
 [react-router](https://github.com/rackt/react-router),
 [radium](https://github.com/FormidableLabs/radium).
 

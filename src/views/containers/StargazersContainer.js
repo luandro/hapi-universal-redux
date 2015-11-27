@@ -35,7 +35,7 @@ class StargazersContainer extends Component {
     }
 
     /**
-     * Render child routes and Radium's style component
+     * Render child routes and Radium's Style component, for css-like global styles.
      */
     render() {
     	return (
