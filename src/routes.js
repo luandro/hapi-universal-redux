@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 import StargazersContainer from './containers/StargazersContainer';
-import Main from './components/Main';
+import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
 
@@ -10,7 +10,7 @@ import About from './components/About';
  */
 export default (
 	<Route component={StargazersContainer}>
-		<Route component={Main}>
+		<Route component={Header}>
 			<Route path="/" component={Home} />
 			<Route path="/about" component={About} />
 		</Route>

@@ -2,11 +2,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import DevTools from './containers/DevTools';
 
 export default function (initialState, debugSession) {
 	let finalCreateStore
 	if(process.env.NODE_ENV !== "production"){
+		const DevTools = require('./containers/DevTools')
 		// Include redux devtools
 		if (debugSession) {
 			// And persist state
