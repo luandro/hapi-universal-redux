@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
 import { connect } from 'react-redux';
-import { fetchUsers, requestUsers } from '../../actions/StargazersActions';
+import { fetchUsers, requestUsers } from '../actions/StargazersActions';
 import Radium, { Style } from 'radium';
 
 

@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/server";
 import {RoutingContext, match} from "react-router";
 import createLocation from "history/lib/createLocation";
 import configureStore from "./store.js";
-import RadiumContainer from './views/containers/RadiumContainer';
+import RadiumContainer from './containers/RadiumContainer';
 import { Provider } from 'react-redux';
 import routes from "./routes";
 import url from "url";

@@ -4,7 +4,7 @@ import {Router} from "react-router";
 import configureStore from "./store.js";
 import { Provider } from 'react-redux';
 import routes from "./routes";
-import RadiumContainer from "./views/containers/RadiumContainer";
+import RadiumContainer from "./containers/RadiumContainer";
 import { createHistory } from "history";
 import { syncReduxAndRouter } from 'redux-simple-router';
 
@@ -27,7 +27,7 @@ syncReduxAndRouter(history, store);
 const devRoot = window.document.getElementById("react-dev");
 
 if(process.env.NODE_ENV !== "production"){
-	const DevTools = require('./views/containers/DevTools')
+	const DevTools = require('./containers/DevTools')
 	ReactDOM.render(
 			<Provider store={store}>
 				<DevTools />
