@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "^6.1.2",
     "h2o2": "^4.0.2",
     "hapi": "^11.1.2",
-    "history": "^1.13.1",
+    "history": "1.13.x",
     "inert": "^3.2.0",
     "isomorphic-fetch": "2.2.0",
     "piping": "0.3.0",
@@ -50,6 +50,7 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
+    "babel-loader": "^5.4.0",
     "babel-plugin-react-transform": "^1.1.1",
     "babel-runtime": "^5.8.29",
     "concurrently": "^1.0.0",
