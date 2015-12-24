@@ -6,7 +6,7 @@ import {
 const initialState = {
 	users: [],
 	nextPage: 1,
-	pagesToFetch: 5,
+	pagesToFetch: 10,
 	isLoading: false
 };
 
