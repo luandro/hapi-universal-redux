@@ -55,11 +55,12 @@ class StargazersContainer extends Component {
     	)
     }
 }
+
 /**
  * Radium connect.
  */
-
 StargazersContainer = Radium(StargazersContainer);
+
 /**
  * Redux connect.
  */
