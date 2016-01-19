@@ -28,6 +28,6 @@ export default function stargazers(state = initialState, action) {
 			isLoading: false
 		})
 	default:
-		return initialState;
+		return state;
 	}
 }

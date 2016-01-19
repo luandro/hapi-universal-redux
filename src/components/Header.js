@@ -1,4 +1,4 @@
-import React, {Component, cloneElement} from 'react';
+import React, { cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 

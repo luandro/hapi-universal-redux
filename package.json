@@ -36,18 +36,18 @@
     "hapi": "^11.1.4",
     "history": "^1.17.0",
     "inert": "^3.2.0",
-    "isomorphic-fetch": "2.2.0",
+    "isomorphic-fetch": "^2.2.0",
     "piping": "0.3.0",
     "radium": "^0.15.3",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
     "react-redux": "^4.0.6",
     "react-router": "^1.0.3",
     "react-tap-event-plugin": "0.2.1",
     "redux": "^3.0.5",
     "redux-simple-router": "^1.0.2",
     "redux-thunk": "^1.0.3",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.11"
   },
   "devDependencies": {
     "babel-loader": "^5.4.0",
