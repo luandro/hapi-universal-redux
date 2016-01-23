@@ -1,3 +1,4 @@
+import babelPolyfill from "babel-polyfill";
 import {Server} from "hapi";
 import h2o2 from "h2o2";
 import inert from "inert";
@@ -114,7 +115,6 @@ server.ext("onPreResponse", (request, reply) => {
 				</head>
 				<body>
 					<div id="react-root">${reactString}</div>
-					<div id="react-dev"></div>
  				<script>
  					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
  					window.__UA__ = ${JSON.stringify(request.headers['user-agent'])}

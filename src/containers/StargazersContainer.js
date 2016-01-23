@@ -16,7 +16,8 @@ class StargazersContainer extends Component {
 		 * Start recursive loading.
 		 */
 		this.recursiveFetch();
-    }
+    };
+
     componentDidUpdate = () => {
     	const {stargazers, dispatch} = this.props;
     	/**
@@ -25,14 +26,15 @@ class StargazersContainer extends Component {
     	if(stargazers.nextPage > 1 && stargazers.pagesToFetch > 0 && stargazers.isLoading === true){
     		this.recursiveFetch();
     	}
-    }
+    };
+
     /**
      * Function that dispatches the fetch action.
      */
     recursiveFetch = () => {
     	const {stargazers, dispatch} = this.props;
     	dispatch(fetchUsers(stargazers.nextPage, stargazers.pagesToFetch));
-    }
+    };
 
     /**
      * Render child routes and Radium's Style component, for css-like global styles.
@@ -53,7 +55,7 @@ class StargazersContainer extends Component {
     			{this.props.children}
     		</div>
     	)
-    }
+    };
 }
 
 /**
