@@ -4,32 +4,32 @@
 
 Isomorphic starterkit with server-side React rendering using
 [npm](https://www.npmjs.com/),
-[piping](https://github.com/mdlawson/piping),
 [webpack](https://webpack.github.io/),
 [webpack-dev-server](https://github.com/webpack/webpack-dev-server),
-[react-transform](https://gaearon.github.io/react-hot-loader),
-[hapi.js](http://www.hapijs.com/),
-[babel.js](http://babeljs.io/),
-[react.js](https://facebook.github.io/react),
+[react-transform-hmr](https://github.com/danmartinez101/babel-preset-react-hmre),
+[hapi](http://www.hapijs.com/),
+[babel](http://babeljs.io/),
+[react](https://facebook.github.io/react),
+[react-router](https://github.com/rackt/react-router)
 [redux](https://github.com/gaearon/redux),
-[redux-devtools](https://github.com/gaearon/redux-devtools),
-[simple-redux-router](https://github.com/jlongster/redux-simple-router),
+[redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension),
+[simple-redux-router](https://github.com/rackt/redux-simple-router),
 [react-router](https://github.com/rackt/react-router),
 [radium](https://github.com/FormidableLabs/radium).
 
 
-![screenshot](http://i.imgur.com/wezOzRd.png)
+![screenshot](http://i.imgur.com/AQXi84d.jpg)
 
 ## Features
 
 - Fully automated with npm run scripts
-- Server hot reloads with piping and Hapi.js
+- Server hot reloads with webpack hmr
 - Webpack for watch + production builds
-- React.js + Router on the client and server
-- React Transform for instant client updates
-- Babel.js automatically compiles ES6 + ES7
+- React + Router on the client and server
+- React-Transform for instant client updates
+- Babel automatically compiles ES6 + ES7
 - React Transmit to preload on server to client
-- Redux for managing app state
+- Redux and Redux-DevTools-Extension for managing app state
 - Radium for advanced inline styling
 
 It just works out-of-the-box.
@@ -46,6 +46,8 @@ Make sure you're using Node >= 4.0.0.
 	npm run dev     # start Hapi server and webpack-dev-server hot server
 
 	# production build and run
+	npm run production
+	# or
 	NODE_ENV=production npm run build
 	NODE_ENV=production npm run start
 ```
