@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router';
+import { Route } from 'react-router';
 import StargazersContainer from './containers/StargazersContainer';
 import Header from './components/Header';
 import Home from './components/Home';

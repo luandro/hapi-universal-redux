@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 
-const Home = ({styles, stargazers}) => (
+const Home = ({ styles, stargazers }) => (
 	<div>
 		<h3>Features</h3>
 	    	<ul>

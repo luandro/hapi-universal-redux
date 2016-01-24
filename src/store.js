@@ -9,5 +9,14 @@ export default function (initialState) {
 	)(createStore);
 
 	const store = finalCreateStore(rootReducer, initialState);
+
+	if (module.hot) {
+	    // Enable Webpack hot module replacement for reducers
+	    module.hot.accept('./reducers', () => {
+	      	const {reducer: nextReducer} = require('./reducers/index');
+	      	store.replaceReducer(nextRootReducer);
+	    });
+	}
+
 	return store;
 }

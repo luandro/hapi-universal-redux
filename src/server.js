@@ -1,16 +1,17 @@
 import babelPolyfill from "babel-polyfill";
-import {Server} from "hapi";
+import { Server } from "hapi";
 import h2o2 from "h2o2";
 import inert from "inert";
 import React from "react";
 import ReactDOM from "react-dom/server";
-import {RoutingContext, match} from "react-router";
+import { RoutingContext, match } from "react-router";
 import createLocation from "history/lib/createLocation";
 import configureStore from "./store.js";
 import RadiumContainer from './containers/RadiumContainer';
 import { Provider } from 'react-redux';
-import routes from "./routes";
+import routesContainer from "./routes";
 import url from "url";
+let routes = routesContainer;
 
 /**
  * Create Redux store, and get intitial state.
@@ -77,7 +78,6 @@ server.route({
 	}
 });
 
-
 /**
  * Catch dynamic requests here to fire-up React Router.
  */
@@ -127,3 +127,19 @@ server.ext("onPreResponse", (request, reply) => {
     }
   });
 });
+
+if (__DEV__) {
+	if (module.hot) {
+		console.log("[HMR] Waiting for server-side updates");
+
+		module.hot.accept("./routes", () => {
+			routes = require("./routes");
+		});
+
+		module.hot.addStatusHandler((status) => {
+			if (status === "abort") {
+				setTimeout(() => process.exit(0), 0);
+			}
+		});
+	}
+}

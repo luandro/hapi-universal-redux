@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({styles}) => (
+export default ({ styles }) => (
 	<div>
 		<h3>Getting started</h3>
 		<p>
@@ -9,13 +9,11 @@ export default ({styles}) => (
 			The goal of this project is to create a simple,
 			yet production ready starterkit for <span style={styles.feature}>React</span> and <span style={styles.feature}>Redux</span> apps.
 		</p>
-		<h3>Redux</h3>
+		<h3>Redux DevTools</h3>
 		<p>
-			To start managing your state with <span style={styles.feature}>Redux</span> create new constants, actions and reducers.
-			On the side is <span style={styles.feature}>Redux DevTools</span>,
-			use it to debug your state.
-			Simply press <span style={styles.feature}>ctrl + H</span> to hide it,
-			or <span style={styles.feature}>ctrl + Q</span> to move it around the screen.
+			To start managing your state create new constants, actions and reducers.
+			Install <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"><span style={styles.feature}>Redux DevTools Extension for Chrome</span></a> if you haven't already,
+			and use it to debug you're app's state.
 		</p>
 	</div>
 )
