@@ -10,11 +10,10 @@ Isomorphic starterkit with server-side React rendering using
 [hapi](http://www.hapijs.com/),
 [babel](http://babeljs.io/),
 [react](https://facebook.github.io/react),
-[react-router](https://github.com/rackt/react-router)
-[redux](https://github.com/gaearon/redux),
+[react-router](https://github.com/reactjs/react-router)
+[redux](https://github.com/reactjs/redux),
 [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension),
-[simple-redux-router](https://github.com/rackt/redux-simple-router),
-[react-router](https://github.com/rackt/react-router),
+[react-router-redux](https://github.com/reactjs/react-router-redux),
 [radium](https://github.com/FormidableLabs/radium).
 
 
@@ -28,7 +27,6 @@ Isomorphic starterkit with server-side React rendering using
 - React + Router on the client and server
 - React-Transform for instant client updates
 - Babel automatically compiles ES6 + ES7
-- React Transmit to preload on server to client
 - Redux and Redux-DevTools-Extension for managing app state
 - Radium for advanced inline styling
 
@@ -60,4 +58,4 @@ the server-side rendering and client-side hot updates.
 
 ## License
 
-BSD 3-Clause license. Copyright © 2015, Luandro. All rights reserved.
+MIT license. Copyright © 2016, Luandro. All rights reserved.

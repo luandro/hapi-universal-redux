@@ -5,7 +5,6 @@ import inert from "inert";
 import React from "react";
 import ReactDOM from "react-dom/server";
 import { RouterContext, match } from "react-router";
-import createLocation from "history/lib/createLocation";
 import configureStore from "./store.js";
 import RadiumContainer from './containers/RadiumContainer';
 import { Provider } from 'react-redux';
@@ -85,8 +84,6 @@ server.ext("onPreResponse", (request, reply) => {
 	if (typeof request.response.statusCode !== "undefined") {
     return reply.continue();
   }
-
-  //let location = createLocation(request.path);
 
   match({routes, location: request.path}, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
