@@ -4,7 +4,7 @@ import h2o2 from "h2o2";
 import inert from "inert";
 import React from "react";
 import ReactDOM from "react-dom/server";
-import { RoutingContext, match } from "react-router";
+import { RouterContext, match } from "react-router";
 import createLocation from "history/lib/createLocation";
 import configureStore from "./store.js";
 import RadiumContainer from './containers/RadiumContainer';
@@ -99,7 +99,7 @@ server.ext("onPreResponse", (request, reply) => {
 		const reactString = ReactDOM.renderToString(
 				<Provider store={store}>
 					<RadiumContainer radiumConfig={{userAgent: request.headers['user-agent']}}>
-						<RoutingContext {...renderProps} />
+						<RouterContext {...renderProps} />
 					</RadiumContainer>
 				</Provider>
 		);

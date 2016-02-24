@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import stargazers from './stargazers';
-import { routeReducer } from 'redux-simple-router';
+import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
   stargazers,
-  routing: routeReducer
+  routing: routerReducer
 });
 
 export default rootReducer;

@@ -1,17 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {Router} from "react-router";
+import { Router, browserHistory } from 'react-router'
 import configureStore from "./store.js";
 import { Provider } from 'react-redux';
 import routes from "./routes";
 import RadiumContainer from "./containers/RadiumContainer";
-import { createHistory } from "history";
-import { syncReduxAndRouter } from 'redux-simple-router';
+import { syncHistoryWithStore } from 'react-router-redux'
 
 const store = configureStore(window.__INITIAL_STATE__);
 delete window.__INITIAL_STATE__;
-const history = createHistory();
-syncReduxAndRouter(history, store);
+const history = syncHistoryWithStore(browserHistory, store)
 
 /**
  * Fire-up React Router.
