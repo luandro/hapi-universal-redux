@@ -87,41 +87,40 @@ server.ext("onPreResponse", (request, reply) => {
 
   match({routes, location: request.path}, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
-      reply.redirect(redirectLocation.pathname + redirectLocation.search)
+      reply.redirect(redirectLocation.pathname + redirectLocation.search);
+      return;
     }
-    else if (error || !renderProps) {
+    if (error || !renderProps) {
       reply.continue();
+      return;
     }
-    else {
-		const reactString = ReactDOM.renderToString(
-				<Provider store={store}>
-					<RadiumContainer radiumConfig={{userAgent: request.headers['user-agent']}}>
-						<RouterContext {...renderProps} />
-					</RadiumContainer>
-				</Provider>
+	const reactString = ReactDOM.renderToString(
+		<Provider store={store}>
+			<RadiumContainer radiumConfig={{userAgent: request.headers['user-agent']}}>
+				<RouterContext {...renderProps} />
+			</RadiumContainer>
+		</Provider>
+	);
+	const webserver = __PRODUCTION__ ? "" : `//${hostname}:8080`;
+	let output = (
+		`<!doctype html>
+		<html lang="en-us">
+			<head>
+				<meta charset="utf-8">
+				<title>Hapi Universal Redux</title>
+				<link rel="shortcut icon" href="/favicon.ico">
+			</head>
+			<body>
+				<div id="react-root">${reactString}</div>
+				<script>
+					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+					window.__UA__ = ${JSON.stringify(request.headers['user-agent'])}
+				</script>
+				<script src=${webserver}/dist/client.js></script>
+			</body>
+		</html>`
 		);
-
-		const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
-		let output = (
-			`<!doctype html>
-			<html lang="en-us">
-				<head>
-					<meta charset="utf-8">
-					<title>Hapi Universal Redux</title>
-					<link rel="shortcut icon" href="/favicon.ico">
-				</head>
-				<body>
-					<div id="react-root">${reactString}</div>
- 				<script>
- 					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
- 					window.__UA__ = ${JSON.stringify(request.headers['user-agent'])}
- 				</script>
- 				<script src=${webserver}/dist/client.js></script>
- 			</body>
-			</html>`
- 		);
-    	reply(output);
-    }
+	reply(output);
   });
 });
 

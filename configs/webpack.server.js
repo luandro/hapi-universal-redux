@@ -1,16 +1,7 @@
-var webpack = require("webpack");
-var path = require("path");
-var fs = require('fs');
-
-var nodeModules = {};
-
-fs.readdirSync('node_modules')
-	.filter(function (x) {
-		return ['.bin'].indexOf(x) === -1;
-	})
-	.forEach(function (mod) {
-		nodeModules[mod] = 'commonjs ' + mod;
-	});
+var webpack       = require("webpack");
+var nodeExternals = require("webpack-node-externals");
+var path          = require("path");
+var fs            = require("fs");
 
 module.exports = {
 	target:  "node",
@@ -29,24 +20,27 @@ module.exports = {
 	],
 	module:  {
 		loaders: [
-			{test: /\.json$/, loaders: ["json"]}
+			{test: /\.json$/, loaders: ["json"]},
+			{test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/, loaders: ["file?context=static&name=/[path][name].[ext]"], exclude: /node_modules/},
+			{test: /\.js$/, loaders: ["babel?presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/}
 		],
 		postLoaders: [
-			{test: /\.js$/, loaders: ["babel?presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/}
 		],
 		noParse: /\.min\.js/
 	},
-	externals: nodeModules,
+	externals: [nodeExternals({
+		whitelist: ["webpack/hot/poll?1000"]
+	})],
 	resolve: {
 		modulesDirectories: [
 			"src",
 			"node_modules",
-			"web_modules"
+			"static"
 		],
 		extensions: ["", ".json", ".js"]
 	},
 	node:    {
 		__dirname: true,
-		fs:        'empty'
+		fs:        "empty"
 	}
 };
