@@ -29,7 +29,7 @@
     "watch-server": "webpack --watch --verbose --colors --display-error-details --config configs/webpack.server-watch.js",
     "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
     "watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
-    "production": "NODE_ENV=production npm run build && NODE_ENV=production npm run start",
+    "production": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production npm run start",
     "dev": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\"",
     "postinstall": "webpack -p --config configs/webpack.client.js"
   },
@@ -42,6 +42,7 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-0": "6.5.0",
+    "cross-env": "^1.0.7",
     "file-loader": "^0.8.5",
     "forever": "0.15.1",
     "h2o2": "^5.1.0",
