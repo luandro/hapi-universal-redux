@@ -18,12 +18,17 @@ let routes = routesContainer;
 const store = configureStore();
 const initialState = store.getState();
 /**
- * Start Hapi server on port 8000.
+ * Start Hapi server
  */
-const hostname = process.env.HOSTNAME || "localhost";
+var envset = {
+  production: process.env.NODE_ENV === 'production'
+};
+
+const hostname = envset.production ? (process.env.HOSTNAME || process['env'].HOSTNAME) : "localhost";
+var port = envset.production ? (process.env.PORT || process['env'].PORT) : 8000
 const server = new Server();
 
-server.connection({host: hostname, port: process.env.PORT || 8000});
+server.connection({host: hostname, port: port});
 
 server.register(
 	[
