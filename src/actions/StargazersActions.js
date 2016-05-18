@@ -6,8 +6,8 @@ import {
 
 let githubApi = "https://api.github.com";
 if (__CLIENT__) {
-	const { hostname, port } = window.location;
-	githubApi = `http://${hostname}:${port}/api/github`;
+	const { protocol, hostname, port } = window.location;
+	githubApi = `${protocol}//${hostname}:${port}/api/github`;
 }
 
 function receiveUsers(fetchedStargazers) {
