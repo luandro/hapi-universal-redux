@@ -1,7 +1,7 @@
 {
   "name": "hapi-universal-redux",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
