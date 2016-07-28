@@ -37,7 +37,7 @@ config.plugins = [
 ];
 
 config.module.postLoaders = [
-	{test: /\.js$/, loaders: ["babel?cacheDirectory&presets[]=es2015&presets[]=stage-0&presets[]=react&presets[]=react-hmre"], exclude: /node_modules/}
+	{test: /\.js$/, loaders: ['react-hot', "babel?cacheDirectory&presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/}
 ];
 
 module.exports = config;
