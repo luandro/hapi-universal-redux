@@ -2,6 +2,11 @@
 ![dependencies](https://img.shields.io/david/luandro/hapi-universal-redux.svg?style=flat-square)
 ![devDependencies](https://img.shields.io/david/dev/luandro/hapi-universal-redux.svg?style=flat-square)
 
+***DEPRECATED***: check out alternatives to building a server-side rendered React app:
+- [nextJS](https://github.com/zeit/next.js)
+- [electrode](https://github.com/electrode-io/electrode-boilerplate-universal-react-node)
+
+
 Isomorphic starterkit with server-side React rendering using
 [npm](https://www.npmjs.com/),
 [webpack](https://webpack.github.io/),
